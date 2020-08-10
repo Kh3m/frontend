@@ -7,8 +7,9 @@ export default function SearchForm() {
       <form>
         <ul className="form-container">
           <li>
-            <label htmlFor="origin">Flying From</label>
+            <i className="fas fa-map-marker-alt input-icons"></i>
             <input
+            placeholder="Flying From"
               type="text"
               name="origin"
               id="origin"
@@ -16,7 +17,7 @@ export default function SearchForm() {
             />
           </li>
           <li>
-            <label htmlFor="destination">Flying To</label>
+           <i className="fas fa-map-marker-alt input-icons"></i>
             <input
               type="text"
               name="destination"
@@ -25,7 +26,7 @@ export default function SearchForm() {
             />
           </li>
           <li>
-            <label htmlFor="departureDate">Departure Date</label>
+            <i className="far fa-calendar-alt"></i>
             <input
               type="date"
               name="departureDate"
