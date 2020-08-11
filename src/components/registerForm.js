@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function registerForm() {
+export default function RegisterForm() {
     return (
         <div>
-            
+
         </div>
     )
 }
