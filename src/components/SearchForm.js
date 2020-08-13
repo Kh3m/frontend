@@ -1,19 +1,25 @@
 import React, { useRef, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faCalendarAlt, faUser, faChild, faCompressArrowsAlt, faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faCalendarAlt, faUser, faChild, faBriefcase } from '@fortawesome/free-solid-svg-icons'
 import DatePicker from 'react-datepicker'
 
-export default function SearchForm() {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+export default function SearchForm({ data, handleDatePicker, handleChange }) {
+
+  const { origin,
+    destination,
+    departureDate,
+    arrivalDate } = data
+
   const [roundTrip, setRoundTrip] = useState(true)
-  const [oneWay, setOneWay] = useState(false)
+
   const [passengerOpen, setPassengerOpen] = useState(false)
   const [travelClassOpen, setTravelClassOpen] = useState(false)
+
   const [passengerCount, setPassengerCount] = useState(1)
   const [adultCount, setAdultCount] = useState(1)
   const [childrenCount, setChildrenCount] = useState(0)
   const [infantCount, setInfantCount] = useState(0)
+
   const [travelClass, setTravelClass] = useState("Economy")
 
   const passengerRef = useRef()
@@ -40,32 +46,44 @@ export default function SearchForm() {
       <form>
         <div className="trip-dir-btn">
           <div className={roundTrip ? "btn btn-info active" : "btn btn-info"}
-            onClick={() => { setRoundTrip(!roundTrip); setOneWay(!oneWay) }} >Round Trip</div>
-          <div className={oneWay ? "btn btn-info active" : "btn btn-info"}
-            onClick={() => { setOneWay(!oneWay); setRoundTrip(!roundTrip); }}>One Way</div>
+            onClick={() => { !roundTrip && setRoundTrip(!roundTrip) }} >Round Trip</div>
+          <div className={!roundTrip ? "btn btn-info active" : "btn btn-info"}
+            onClick={() => { roundTrip && setRoundTrip(!roundTrip); }}>One Way</div>
+          <input type="hidden"
+            name="tripDirection"
+            value={roundTrip ? "roundTrip" : "oneWay"}
+            onChange={(e) => handleChange(e)} />
         </div>
         <ul className="form-container">
           <li className="form-list">
-            <div>
+            <div className="first-level-div">
               <FontAwesomeIcon icon={faMapMarkerAlt} className="input-icons"></FontAwesomeIcon>
-              <input
-                placeholder="Flying From"
-                type="text"
-                name="origin"
-                id="origin"
-              //   onChange={(e) => setOrigin(e.target.value)}
-              />
+              <div className="input-container">
+                <input
+                  placeholder="Flying From"
+                  type="text"
+                  name="origin"
+                  id="origin"
+                  value={origin}
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+
             </div>
 
-            <div>
+            <div className="first-level-div">
               <FontAwesomeIcon icon={faMapMarkerAlt} className="input-icons"></FontAwesomeIcon>
-              <input
-                placeholder="Flying To"
-                type="text"
-                name="destination"
-                id="destination"
-              //   onChange={(e) => setDestination(e.target.value)}
-              />
+              <div className="input-container">
+                <input
+                  placeholder="Flying To"
+                  type="text"
+                  name="destination"
+                  id="destination"
+                  value={destination}
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+
             </div>
             <div className="clearfix" />
           </li>
@@ -73,10 +91,13 @@ export default function SearchForm() {
             <div className="date-picker">
               <FontAwesomeIcon icon={faCalendarAlt} className="input-icons"></FontAwesomeIcon>
               <DatePicker
-                selected={startDate}
+                selected={departureDate}
+                minDate={new Date()}
                 selectsStart
-                startDate={startDate}
-                endDate={endDate}
+                onChange={(date) => handleDatePicker(date, 'departureDate')}
+                name="departureDate"
+                startDate={departureDate}
+                endDate={arrivalDate}
                 placeholderText="Departure Date"
                 popperPlacement="bottom"
                 popperModifiers={{
@@ -86,16 +107,16 @@ export default function SearchForm() {
               />
             </div>
 
-            <div className="date-picker"
-              className={roundTrip ? "" : "hidden"}
-            >
+            <div className={roundTrip ? "date-picker" : "hidden"}>
               <FontAwesomeIcon icon={faCalendarAlt} className="input-icons"></FontAwesomeIcon>
               <DatePicker
-                selected={endDate}
+                selected={arrivalDate}
                 selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
+                minDate={departureDate}
+                onChange={(date) => handleDatePicker(date, 'arrivalDate')}
+                name="arrivalDate"
+                startDate={departureDate}
+                endDate={arrivalDate}
                 placeholderText="Arrival Date"
                 popperPlacement="bottom"
                 popperModifiers={{
@@ -108,11 +129,11 @@ export default function SearchForm() {
           </li>
           <li className="form-list" ref={passengerRef}>
             <div className="select-list btn no-outline">
-              <div className="passengers" onClick={() => setPassengerOpen(!passengerOpen)}>
+              <div className="input-div" onClick={() => setPassengerOpen(!passengerOpen)}>
                 <FontAwesomeIcon icon={faUser} className="input-icons"></FontAwesomeIcon>
                 {passengerCount} {passengerCount > 1 ? 'Passengers' : 'Passenger'}
               </div>
-              <div className={passengerOpen ? "travel-class" : "hidden"} >
+              <div className={passengerOpen ? "dropdown-div" : "hidden"} >
                 <ul className="list-group dropdown-list">
                   <li className="list-group-item passenger-list">
                     <div>
@@ -187,8 +208,9 @@ export default function SearchForm() {
                   </li>
                 </ul>
               </div>
-
-
+              <input type="hidden" name="adults" value={adultCount} onChange={(e) => handleChange(e)} />
+              <input type="hidden" name="children" value={childrenCount} onChange={(e) => handleChange(e)} />
+              <input type="hidden" name="infants" value={infantCount} onChange={(e) => handleChange(e)} />
             </div>
             <div className="clearfix" />
           </li>
@@ -197,9 +219,9 @@ export default function SearchForm() {
             <div className="select-list btn no-outline"
               onClick={() => setTravelClassOpen(!travelClassOpen)}>
               <FontAwesomeIcon icon={faBriefcase} className="input-icons"></FontAwesomeIcon>
-              <div className="passengers">
+              <div name="" className="input-div">
                 {travelClass}
-                <div className={travelClassOpen ? "travel-class" : "hidden"}>
+                <div className={travelClassOpen ? "dropdown-div" : "hidden"}>
                   <ul className="list-group dropdown-list">
                     <li className="list-group-item" onClick={() => setTravelClass("Economy")}>Economy</li>
                     <li className="list-group-item" onClick={() => setTravelClass("Premium Economy")}>Premium Economy</li>
@@ -209,7 +231,7 @@ export default function SearchForm() {
                 </div>
               </div>
             </div>
-
+            <input type="hidden" name="travelClass" value={travelClass} onChange={(e) => handleChange(e)} />
           </li>
         </ul>
       </form>
