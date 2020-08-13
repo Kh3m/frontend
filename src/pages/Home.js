@@ -4,9 +4,12 @@ import Banner from '../components/Banner'
 
 export default function Home() {
     return (
-        <Banner banner="home-banner">
-            <SearchForm />
-        </Banner>
+        <div className="container-fluid">
+            <Banner bannerStyle="home-banner">
+                <SearchForm />
+            </Banner>
+        </div>
+
     )
 }
 
