@@ -6,6 +6,8 @@ import DatePicker from 'react-datepicker'
 export default function SearchForm() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [roundTrip, setRoundTrip] = useState(true)
+  const [oneWay, setOneWay] = useState(false)
   const [passengerOpen, setPassengerOpen] = useState(false)
   const [travelClassOpen, setTravelClassOpen] = useState(false)
   const [passengerCount, setPassengerCount] = useState(1)
@@ -31,19 +33,16 @@ export default function SearchForm() {
         setTravelClassOpen(!travelClassOpen)
       }
     }
-
-    // else setPassengerOpen(!passengerOpen)
-    // if (!travelClassRef.current.contains(e.target)) {
-    //   setTravelClassOpen(!travelClassOpen)
-    // } else setTravelClassOpen(!travelClassOpen)
   }
 
   return (
     <div className="form">
       <form>
-        <div>
-          <button className="btn btn-info">One Way</button>
-          <button className="btn btn-info">Round Trip</button>
+        <div className="trip-dir-btn">
+          <div className={roundTrip ? "btn btn-info active" : "btn btn-info"}
+            onClick={() => { setRoundTrip(!roundTrip); setOneWay(!oneWay) }} >Round Trip</div>
+          <div className={oneWay ? "btn btn-info active" : "btn btn-info"}
+            onClick={() => { setOneWay(!oneWay); setRoundTrip(!roundTrip); }}>One Way</div>
         </div>
         <ul className="form-container">
           <li className="form-list">
@@ -88,7 +87,7 @@ export default function SearchForm() {
             </div>
 
             <div className="date-picker"
-            //   className={isOneWay ? "hidden" : ""}
+              className={roundTrip ? "" : "hidden"}
             >
               <FontAwesomeIcon icon={faCalendarAlt} className="input-icons"></FontAwesomeIcon>
               <DatePicker
