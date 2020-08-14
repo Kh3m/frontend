@@ -4,7 +4,7 @@ import Home from '../pages/Home'
 import Flights from '../pages/Flights';
 import Information from '../pages/Information';
 import Airlines from '../pages/Airlines';
-import PopularDestination from '../pages/PopularDestination';
+import FeaturedDestination from '../pages/FeaturedDestination';
 
 
 export default class Main extends Component {
@@ -70,7 +70,7 @@ export default class Main extends Component {
             render={props => (<Airlines {...props} />)} />
 
           <Route exact={true} path="/destination/:slug"
-            render={props => (<PopularDestination {...props} />)} />
+            render={props => (<FeaturedDestination {...props} />)} />
 
           <Route component={Error} />
         </Switch>

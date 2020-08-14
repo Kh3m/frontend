@@ -8,13 +8,13 @@ export default function RegisterForm() {
                     <h3 className="text-center py-4">Sign Up for Cheapest Deals</h3>
 
 
-                    <label for="defaultFormCardNameEx" className="grey-text font-weight-light">Your name</label>
+                    <label htmlFor="defaultFormCardNameEx" className="grey-text font-weight-light">Your name</label>
                     <input type="text" id="defaultFormCardNameEx" className="form-control signup-input" />
 
                     <br />
 
 
-                    <label for="defaultFormCardEmailEx" className="grey-text font-weight-light">Your email</label>
+                    <label htmlFor="defaultFormCardEmailEx" className="grey-text font-weight-light">Your email</label>
                     <input type="email" id="defaultFormCardEmailEx" className="form-control signup-input" />
 
                     <div className="text-center py-4 mt-3">

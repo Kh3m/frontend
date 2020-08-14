@@ -3,6 +3,7 @@ import SearchForm from '../components/SearchForm'
 import Banner from '../components/Banner'
 import PopularAirlines from '../components/PopularAirlines'
 import Offers from '../components/Offers'
+import PopularDestinations from '../components/PopularDestinations'
 
 export default function Home({ data, handleChange, handleDatePicker }) {
     return (
@@ -17,6 +18,9 @@ export default function Home({ data, handleChange, handleDatePicker }) {
             </section>
             <section className="section clearfix">
                 <Offers />
+            </section>
+            <section className="section clearfix">
+                <PopularDestinations />
             </section>
         </div>
 

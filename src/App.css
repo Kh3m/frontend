@@ -565,3 +565,57 @@ h6 {
     width: calc(100vw - 8em);
   }
 }
+/* *****************************************************END Offers *
+*
+*
+***********************************************************Slider */
+.slider-container {
+  overflow-x: auto;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 2rem;
+  padding: 3px;
+  scroll-behavior: smooth;
+  width: calc(100vw - 4em);
+}
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.child {
+  padding: 5px 20px;
+  background: var(--secondaryColor);
+  text-align: center;
+  width: 100%;
+  margin-right: 10px;
+  border-radius: 21px;
+}
+.prev {
+  left: 1rem;
+}
+.next {
+  right: 1rem;
+}
+.btn-slide {
+  position: absolute;
+  box-shadow: 0 0 6.1px 0.9px grey;
+  padding: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: grey;
+  text-align: center;
+  color: var(--secondaryColor);
+  border-radius: 50%;
+}
+.child img {
+  max-width: 250px;
+  max-height: 150px;
+}
+/* @media only screen and (min-width: 768px) {
+  .slider-container {
+    width: calc(100vw - 8em);
+  }
+} */
