@@ -10,12 +10,10 @@ import img5 from "./images/p2.jpg";
 
 export default [
   {
-    sys: {
-      id: "1"
-    },
-    fields: {
-      from: {
-        destination: "London",
+    cities: [
+      {
+        id: "1",
+        name: "London",
         slug: "LHR",
         description: `London is the largest city in the United Kingdom. London is the largest city in Europe. The exact centre of London is marked by a plaque in the Church of St Martin's-in-the-Fields overlooking Trafalgar Square. The tallest building in London is The Shard London Bridge - 310 meters (1,017ft) tall.`,
         extras: [
@@ -29,8 +27,9 @@ export default [
           `More than 80 billionaires live in London making it the city with the highest number of billionaires in the world. Moreover, London billionaires represent 80% of all billionaires living in the UK. In this aspect, London leaves behind big cities like New York, San Francisco, Moscow, Paris, etc,`,
         ]
       },
-      to: {
-        destination: "New York",
+      {
+        id: 2,
+        name: "New York",
         slug: "LGA",
         description: `New York is the economic capital of the world. 
         Areas such as Wall Street, The World Trade Center Buildings, 
@@ -46,52 +45,10 @@ export default [
           `The first pizzeria in the United States opened in NYC in 1895. Since the 1960s, the price of a slice of pizza has been roughly the same price as a subway ride, generating the idea of “Pizza Principle” among economists.`,
         ]
       },
-      airline: {
-        name: "Delta",
-        airlineId: "DL 214",
-        description: "",
-        logo:
-        {
-          fields: {
-            file: {
-              url: logo1
-            }
-          }
-        }
+      {
 
-      },
-      tripClass: "economy",
-      direct: true,
-      stopOver: {
-        destination: "",
-        slug: "",
-        description: "",
-      },
-      price: 900,
-      departureDate: "2020-06-05",
-      roundTrip: true,
-      returnDate: "2020-07-05",
-      luggageLimit: 50,
-      totalDuration: "6h 30m",
-      featured: true,
-      images: [
-        {
-          fields: {
-            file: {
-              url: img1
-            }
-          }
-        }
-      ]
-    }
-  },
-  {
-    sys: {
-      id: "2"
-    },
-    fields: {
-      from: {
-        destination: "Boston",
+        id: 3,
+        name: "Boston",
         slug: "BOS",
         description: `Boston is best known for its famous baked beans, Fenway Park, The Boston Marathon, and of course for the bar from Cheers, but dig a little deeper below the surface and you'll find a surprising wealth of things that make Boston one of the best cities in America—and the world.`,
         extras: [
@@ -101,13 +58,14 @@ export default [
           `In the 19th century, acclaimed landscape architect Frederick Law Olmsted laid out his plan for a sprawling Emerald Necklace surrounding the city. From original green space like the Esplanade on the Charles River, the Back Bay Fens, and Boston Common to newer iterations like the 15-acre Rose Fitzgerald Kennedy Greenway, all Boston neighborhoods offer outdoor opportunities for fresh air and exercise without having to leave the city limits.`,
           `Boston is one of the healthiest cities in the country with a high quality of life to match. Deutsche Bank says Boston is the eighth best city in the world in terms of quality of life. (Boston is the highest-ranking U.S. city on the list). Additionally, Money describes Boston as the best place to live in the Northeast with a strong local economy, family activities such as The New England Aquarium, and the highest per capita art funding out of all the cities looked at. Speaking of art...`,
           `There are countless things to do in Boston but any time spent here must include a sampling of the city's art, music, and theatre.
-          Boston is a city deeply committed to supporting the arts. With world-renowned institutions like the Boston Museum of Fine Arts, The Boston Symphony Orchestra, Berklee School of Music, and Huntington Theatre Company all calling Boston their home, it's no surprise that in 2017, the NCAR Arts Vibrancy Index listed Boston as #6 on their Top 20 Arts Vibrant Cities. Add to this a long list of art-fostering organizations such as the Boston Center for the Arts, and you begin to get a sense of just how vibrant Boston's art, music, and theatre scenes are.`,
+              Boston is a city deeply committed to supporting the arts. With world-renowned institutions like the Boston Museum of Fine Arts, The Boston Symphony Orchestra, Berklee School of Music, and Huntington Theatre Company all calling Boston their home, it's no surprise that in 2017, the NCAR Arts Vibrancy Index listed Boston as #6 on their Top 20 Arts Vibrant Cities. Add to this a long list of art-fostering organizations such as the Boston Center for the Arts, and you begin to get a sense of just how vibrant Boston's art, music, and theatre scenes are.`,
           `After Harry Frazee traded Babe Ruth from the Boston Red Sox to New York in 1920, the Red Sox suffered an 86-year losing streak that prevented them from winning the World Series. This streak was said to be the result of the "Curse of the Bambino." The losing streak, and supposedly the curse, broke in 2004 when the Red Sox won against the Cardinals.`,
           `The Boston Public Library, founded in 1849, was not only the first public library in the United States, but when the first branch opened in East Boston in 1869, it became the country's first branch library system.`,
         ]
       },
-      to: {
-        destination: "Madrid",
+      {
+        id: 4,
+        name: "Madrid",
         slug: "MAD",
         description: `Madrid lies practically at the geographic center of Spain and is the country's capital. As such, the city is home to Spain's government and is a national center of economic, cultural, and educational life.`,
         extras: [
@@ -120,295 +78,94 @@ export default [
           `Madrid’s cardinal sin is telling a Spanish grandmother you’re full. If you’re eating in someone’s home and you tell the host you’re full, it will not only offend them, but you’ll still be served much more. It’s better to say something like “un poco más,” which means just a little bit more. This way, you’ll be served just a small portion more and won’t offend your host.`,
           `Ah, the dreaded false cognate. Cognates are words that sound the same in two different languages and have the same meaning. A false cognate, however, means that words in different languages sound the same but have a very different meaning. So be careful when speaking Spanish that you think you know but don’t, because if you say “embarazada” it actually means you’re pregnant, not embarrassed.`,
         ]
-      },
-      airline: {
-        name: "KLM",
-        airlineId: "KL 587",
-        description: "",
-        logo:
-        {
-          fields: {
-            file: {
-              url: logo2
-            }
-          }
-        }
 
       },
-      tripClass: "business",
-      direct: true,
-      stopOver: {
-        destination: "",
-        slug: ""
-      },
-      price: 800,
-      departureDate: "2020-05-03",
-      roundTrip: true,
-      returnDate: "2020-05-17",
-      luggageLimit: 50,
-      totalDuration: "7h 20m",
-      featured: true,
-      images: [
-        {
-          fields: {
-            file: {
-              url: img2
-            }
-          }
-        }
-
-      ]
-    }
-  },
-  {
-    sys: {
-      id: "3"
-    },
-    fields: {
-      from: {
-        destination: "Lagos",
-        slug: "LOS",
-        description: "",
-      },
-      to: {
-        destination: "Dublin",
+      {
+        id: "5",
+        name: "Dublin",
         slug: "DUB",
         description: `Dublin is a warm and welcoming city, known for the friendliness of its people and famous for its craic (“crack”)—that mixture of repartee, humour, intelligence, and acerbic and deflating insight that has attracted writers, intellectuals, and visitors for centuries.`,
         extras: [
           `The name for Dublin in the Irish language is both Dubh Linn and Baile Átha Cliath. While walking around Dublin you’re more likely to see the latter on road signs. The literal meaning of Átha Cliath is “Ford of the Reed Hurdles.”
-          Dublin or Dubh Linn is derived from the Old Irish Gaelic, which has its literal meaning “Black Pool”. The Dubh Linn was a lake used by the Vikings to moor their trade ships and was connected to the Liffey by the River Poddle.`,
+              Dublin or Dubh Linn is derived from the Old Irish Gaelic, which has its literal meaning “Black Pool”. The Dubh Linn was a lake used by the Vikings to moor their trade ships and was connected to the Liffey by the River Poddle.`,
           `The city of Dublin covers a land area of 44.5 square miles. The average temperature in January is 41°F (5 °C) and the July average is 63°F (17°C). It is estimated that 50 per cent of the city’s residents are under 25 years of age. My advice: dress warmly and party hard.`,
           `Dublin’s O’Connell Bridge that covers the famed River Liffey is the only traffic bridge in Europe, which has the same width as its length.
-          It was originally made of rope and could only carry one man and a donkey at a time. It was replaced with a wooden structure in 1801. The current concrete bridge was built in 1863 and was first called “Carlisle Bridge”.`,
+              It was originally made of rope and could only carry one man and a donkey at a time. It was replaced with a wooden structure in 1801. The current concrete bridge was built in 1863 and was first called “Carlisle Bridge”.`,
           `Dublin is the home to many acclaimed literary pioneers. The list is long and includes Oscar Wilde, an Irish poet, playwright, essayist, and novelist, Bram Stoker, and James Joyce. Nobel Laureates W.B Yeats, Samuel Beckett, George Bernard Shaw and Seamus Heaney also lived in Dublin. There’s no doubt that Dublin city has contributed a great deal of historic literature and as such, there are many libraries, publishing institutions, and literary institutions.`,
           `Dublin isn’t just home to bookstores, cemeteries, and pubs; it also has the largest city park in all of Europe. Phoenix Park sits on 707 hectares of land, which makes it the largest city park in the world after Central Park in New York. The park is home to Dublin Zoo which is the park’s most popular attractions. Dublin also has over 2,000 hectares of amazing greenery with miles of hiking trails and walking paths.`,
           `None of the so-called Dublin Mountains is high enough to meet the criteria required to claim mountain status. The Sugarloaf is the tallest ‘Dublin Mountain’ yet measures a mere 423.3 meters (or 1388.7 feet) above sea level.`,
           `Dublin has a renowned history in the literary and movie world with celebrated native names such George Bernard Shaw (dramatist, critic and Nobel Prize winner), James Joyce (writer and poet), Oscar Wilde (playwright, poet, essayist and novelist) and Dracula creator Bram Stoker to name but a few. Prominent Hollywood actors hailing from the city include Maureen O’Hara, Brendan Gleeson, Gabriel Byrne and Colin Farrell.`,
           `Dublin is home to many of Ireland’s most famous musicians prominent Hollywood actors, from the Dubliners and Thin Lizzy, Sinead O’Connor and U2 to Maureen O’Hara, Brendan Gleeson, Gabriel Byrne and Colin Farrell.
-          Many of U2’s back catalog of albums were recorded in their home city. Windmill Lane Studios was the place where U2 recorded their early work and first three albums. The site at Windmill Lane Studios is covered in graffiti from fans that have paid pilgrimage from all over the world and is known as the “U2 Wall.”`,
+              Many of U2’s back catalog of albums were recorded in their home city. Windmill Lane Studios was the place where U2 recorded their early work and first three albums. The site at Windmill Lane Studios is covered in graffiti from fans that have paid pilgrimage from all over the world and is known as the “U2 Wall.”`,
         ]
       },
-      airline: {
-        name: "Virgin Atlantic",
-        airlineId: "VS 138",
-        description: "",
-        logo:
-        {
-          fields: {
-            file: {
-              url: logo3
-            }
-          }
-        }
-
-      },
-      tripClass: "economy",
-      direct: false,
-      stopOver: {
-        destination: "Dublin",
-        slug: "DUB"
-      },
-      price: 900,
-      departureDate: "2020-07-02",
-      roundTrip: false,
-      returnDate: "",
-      luggageLimit: 50,
-      totalDuration: "16h 30m",
-      featured: true,
-      images: [
-        {
-          fields: {
-            file: {
-              url: img3
-            }
-          }
-        }
-
-      ]
-    }
-  },
-  {
-    sys: {
-      id: "4"
-    },
-    fields: {
-      from: {
-        destination: "Lagos",
-        slug: "LOS",
-        description: "",
-      },
-      to: {
-        destination: "Los Angeles",
+      {
+        id: "6",
+        name: "Los Angeles",
         slug: "LAX",
         description: `Los Angeles is the second-most populous city in the United States, after New York City.
-        It is the largest and most populous city in the state of California and the cultural, financial, and commercial center of Southern California.
-        The city is located in a large basin bounded by the Pacific Ocean on one side and by mountains as high as 3,000 meters (10,000 feet) on the others.
-        As of June 2018, the population of Los Angeles is about 4 million people.
-        The city of Los Angeles covers a total area of 1,302 square kilometers (503 square miles), comprising 1,214 square kilometers (469 square miles) of land and 88 square kilometers (34 square miles) of water.`,
+            It is the largest and most populous city in the state of California and the cultural, financial, and commercial center of Southern California.
+            The city is located in a large basin bounded by the Pacific Ocean on one side and by mountains as high as 3,000 meters (10,000 feet) on the others.
+            As of June 2018, the population of Los Angeles is about 4 million people.
+            The city of Los Angeles covers a total area of 1,302 square kilometers (503 square miles), comprising 1,214 square kilometers (469 square miles) of land and 88 square kilometers (34 square miles) of water.`,
         extras: [
           `When LA was founded, the city’s full name was “El Pueblo de Nuestra Senora Reina de los Angeles sobre el Rio Porciuncula.” (If your Spanish is rusty, that translates to “The town of our lady queen of the angels on the Porciuncula River.”)`,
           `More than 800 languages are spoken in New York City, making it the most linguistically diverse city in the world. 4 in 10 households speak a language other than English.`,
           `Los Ángeles means ‘the angels’ in Spanish.
-          Historically home to the Chumash and Tongva, Los Angeles was claimed by Juan Rodríguez Cabrillo for Spain in 1542 along with the rest of what would become Alta California. 
-          The city was officially founded on September 4, 1781, by Spanish governor Felipe de Neve.
-          In 1848, at the end of the Mexican–American War, Los Angeles and the rest of California were purchased as part of the Treaty of Guadalupe Hidalgo, becoming part of the United States.
-          In 1850 Los Angeles is incorporated as a municipality, and California becomes the 30th state in the union.`,
+              Historically home to the Chumash and Tongva, Los Angeles was claimed by Juan Rodríguez Cabrillo for Spain in 1542 along with the rest of what would become Alta California. 
+              The city was officially founded on September 4, 1781, by Spanish governor Felipe de Neve.
+              In 1848, at the end of the Mexican–American War, Los Angeles and the rest of California were purchased as part of the Treaty of Guadalupe Hidalgo, becoming part of the United States.
+              In 1850 Los Angeles is incorporated as a municipality, and California becomes the 30th state in the union.`,
           `In 1892, oil was discovered near what is now Dodger Stadium. By 1923, Los Angeles produced one quarter of the world’s oil. It still sits atop the third largest oil field in the country!`,
           `When it rains in LA, it pours. On April 5, 1926, a gauge in the San Gabriel Mountains collected an inch of rain in just one minute. While in February 1978, almost a foot of rain fell in 24 hours.`,
           ` How did the film industry end up in LA? To get away from Thomas Edison. Edison—who lived in New Jersey—held most of the country’s film patents. Filmmakers fled westward to avoid Edison’s intellectual property claims. 
-          Beverly Hills started out as a modest lima bean ranch.`,
+              Beverly Hills started out as a modest lima bean ranch.`,
           `New York City became the first capital of the United States in 1789.`,
           `The Hollywood sign originally said “Hollywoodland.” (It was an advertisement for Tinseltown’s latest real estate development.)`,
         ]
       },
-      airline: {
-        name: "Ethiopian",
-        airlineId: "ET 200",
-        description: "",
-        logo:
-        {
-          fields: {
-            file: {
-              url: logo3
-            }
-          }
-        }
-
-      },
-      tripClass: "economy",
-      direct: false,
-      stopOver: {
-        destination: "Dublin",
-        slug: "DUB",
-        description: "",
-      },
-      price: 900,
-      departureDate: "2020-07-02",
-      roundTrip: false,
-      returnDate: "2020-07-20",
-      luggageLimit: 50,
-      totalDuration: "16h 30m",
-      featured: true,
-      images: [
-        {
-          fields: {
-            file: {
-              url: img3
-            }
-          }
-        }
-
-      ]
-    }
-  },
-  {
-    sys: {
-      id: "5"
-    },
-    fields: {
-      from: {
-        destination: "Lagos",
-        slug: "LOS",
-        description: "",
-      },
-      to: {
-        destination: "Los Angeles",
-        slug: "LAX",
-        description: "",
-      },
-      airline: {
+    ],
+    airlines: [
+      {
+        id: "1",
         name: "Delta",
-        airlineId: "DA 138",
+        airlineId: "DL 214",
         description: "",
-        logo:
-        {
-          fields: {
-            file: {
-              url: logo3
-            }
-          }
+        logo: {
+          url: logo1
         }
 
       },
-      tripClass: "economy",
-      direct: false,
-      stopOver: {
-        destination: "Dublin",
-        slug: "DUB",
+      {
+        id: "2",
+        name: "KLM",
+        airlineId: "KL 587",
         description: "",
+        logo: { url: logo2 }
       },
-      price: 730,
-      departureDate: "2020-07-02",
-      roundTrip: false,
-      returnDate: "2020-07-08",
-      luggageLimit: 50,
-      totalDuration: "16h 30m",
-      featured: false,
-      images: [
-        {
-          fields: {
-            file: {
-              url: img4
-            }
-          }
-        },
-
-      ]
-    }
-  },
-  {
-    sys: {
-      id: "6"
-    },
-    fields: {
-      from: {
-        destination: "Lagos",
-        slug: "LOS",
-        description: "",
-      },
-      to: {
-        destination: "Los Angeles",
-        slug: "LAX",
-        description: "",
-      },
-      airline: {
+      {
+        id: "3",
         name: "Virgin Atlantic",
         airlineId: "VS 138",
         description: "",
-        logo:
-        {
-          fields: {
-            file: {
-              url: logo3
-            }
-          }
-        }
+        logo: { url: logo3 }
 
       },
-      tripClass: "economy",
-      direct: false,
-      stopOver: {
-        destination: "Dublin",
-        slug: "DUB",
+      {
+        id: "4",
+        name: "Ethiopian",
+        airlineId: "ET 200",
         description: "",
+        logo: { url: logo3 }
       },
-      price: 550,
-      departureDate: "2020-07-02",
-      roundTrip: false,
-      returnDate: "2020-08-01",
-      luggageLimit: 50,
-      totalDuration: "16h 30m",
-      featured: false,
-      images: [
-        {
-          fields: {
-            file: {
-              url: img5
-            }
-          }
-        },
-
-      ]
-    }
+      {
+        id: "5",
+        name: "Delta",
+        airlineId: "DA 138",
+        description: "",
+        logo: { url: logo3 }
+      }
+    ]
   }
+
 ]
