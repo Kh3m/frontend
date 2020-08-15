@@ -17,24 +17,9 @@ export default function Slider({ children }) {
         scrollWidthValue = leftRef.current && leftRef.current.scrollWidth;
 
     useEffect(() => {
-
-        let interval = null;
-
-        if (leftRef && !prevDisabled) {
-            interval = setInterval(() => {
-                setSeconds(seconds => seconds + 1);
-                console.log(seconds)
-                leftRef.current.scrollLeft -= offsetWidthValue / 2;
-                checkButtons(offsetWidthValue, scrollWidthValue);
-            }, 1000);
-        } else if (rightRef && !nextDisabled) {
-            interval = setInterval(() => {
-                leftRef.current.scrollLeft += offsetWidthValue / 2;
-                checkButtons(offsetWidthValue, scrollWidthValue);
-            }, 1000);
-        }
-        return () => clearInterval(interval);
-    }, [leftRef, seconds, nextDisabled, offsetWidthValue, prevDisabled, scrollWidthValue]);
+        leftRef.current.scrollLeft -= offsetWidthValue / 2;
+        checkButtons(offsetWidthValue, scrollWidthValue);
+    });
 
 
     const checkButtons = (offsetWidthValue, scrollWidthValue) => {
