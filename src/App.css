@@ -100,6 +100,7 @@ h6 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   background: var(--mainWhite);
+  border-radius: 1rem;
 }
 .clearfix::after {
   clear: both;
@@ -466,31 +467,35 @@ h6 {
 /* *****************************************************END Banner *
 *
 *
-***********************************************************Popular Airlines *
-*
-*
 *
 ********************************** SECTION*********************************************** */
 .container-fluid {
   padding: 0;
 }
 .section {
-  padding: 0.5rem 0;
+  display: contents;
+  /* padding: 0.5rem 0;
   background: var(--mainGrey);
   text-align: center;
-  width: 100%;
+  width: 100%; */
 }
+/* .section > div {
+  width: auto;
+} */
 /* @media only screen and (min-width: 768px) {
   .section {
     padding: 2rem 0;
   }
 } */
-/********************************** SECTION*********************************************** */
+/**********************************END SECTION*********************************************** *
+*
+*
+***********************************************************Popular Airlines */
 .pop {
   height: 100%;
-  width: 100%;
   padding: 1rem;
-  margin: 1rem;
+  background-color: var(--mainGrey);
+  text-align: center;
 }
 .popular-airlines {
   padding: 1rem;
@@ -521,14 +526,17 @@ h6 {
 }
 @media only screen and (min-width: 768px) {
   .pop {
-    margin: 2rem 3rem;
     padding: 2rem 3rem;
   }
   .popular-airlines {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 0.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 3rem;
+  }
+  .signup {
+    margin: 0.5rem 3rem 0.5rem 0.5rem;
+    padding: 0;
   }
 }
 /* *****************************************************END Popular Ailines *
@@ -538,17 +546,19 @@ h6 {
 
 .offers {
   margin: auto;
-  width: calc(100vw - 4em);
   height: 100%;
   min-height: 20em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
   justify-content: space-around;
   align-items: center;
+  padding: 0.5rem 3rem;
+  margin: 4rem;
+  text-align: center;
 }
 .service {
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 .service > h6 {
   letter-spacing: var(--mainSpacing);
@@ -562,13 +572,18 @@ h6 {
 }
 @media only screen and (min-width: 768px) {
   .offers {
-    width: calc(100vw - 8em);
+    margin-left: 5rem;
+    margin-right: 5rem;
   }
 }
 /* *****************************************************END Offers *
 *
 *
 ***********************************************************Slider */
+.offers-section,
+.popular-cities {
+  background: var(--mainWhite);
+}
 .slider-container {
   overflow-x: auto;
   display: inline-block;
@@ -614,8 +629,11 @@ h6 {
   max-width: 250px;
   max-height: 150px;
 }
+.child h3,
+.child h5 {
+  color: #fff;
+  text-shadow: 2px 2px 1px #000;
+}
 /* @media only screen and (min-width: 768px) {
-  .slider-container {
-    width: calc(100vw - 8em);
   }
 } */

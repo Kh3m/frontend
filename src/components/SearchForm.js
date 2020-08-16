@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faCalendarAlt, faUser, faChild, faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faCalendarAlt, faUser, faBriefcase } from '@fortawesome/free-solid-svg-icons'
 import DatePicker from 'react-datepicker'
 
 export default function SearchForm({ data, handleDatePicker, handleChange }) {

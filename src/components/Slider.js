@@ -8,8 +8,6 @@ export default function Slider({ children }) {
 
     const leftRefValue = rightRef.current && rightRef.current.scrollRight >= 0 ? true : false
 
-    const [seconds, setSeconds] = useState(0);
-
     const [prevDisabled, setPrevDisabled] = useState(true)
     const [nextDisabled, setNextDisabled] = useState(leftRefValue)
 

@@ -7,7 +7,7 @@ import Airlines from '../pages/Airlines';
 import FeaturedDestination from '../pages/FeaturedDestination';
 
 
-export default class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -79,3 +79,4 @@ export default class Main extends Component {
     )
   }
 }
+export default withRouter(Main)

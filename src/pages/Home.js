@@ -16,10 +16,10 @@ export default function Home({ data, handleChange, handleDatePicker }) {
             <section className="section clearfix">
                 <PopularAirlines />
             </section>
-            <section className="section clearfix">
+            <section className="offers-section section clearfix">
                 <Offers />
             </section>
-            <section className="section clearfix">
+            <section className="popular-cities section clearfix">
                 <PopularDestinations />
             </section>
         </div>

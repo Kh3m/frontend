@@ -1,51 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm'
-
-import ethiopian from "../images/ethiopian.png";
-import emirates from "../images/emirates.png";
-import delta from "../images/delta.png";
-import qatar from "../images/qatar.png";
-import etihad from "../images/etihad.png";
-import lufthanza from "../images/lufthanza.png";
-import turkish from "../images/turkish.png";
-import virginatlantic from "../images/virgin-atlantic.png";
-import airpeace from "../images/airpeace.png";
-
+import axios from 'axios'
 
 
 export default function PopularAirlines() {
+
+    const [airlines, setAirlines] = useState([]);
+
+    useEffect(() => {
+        const fetchAirlines = async () => {
+            const { data } = await axios.get("/api/airlines");
+            setAirlines(data)
+        }
+        fetchAirlines();
+    }, [])
+    const popularAirlines = airlines.map((airline, indx) => {
+        return (
+            <Link to={`/airlines/${airline.name}`} key={indx}>
+                <img src={airline.logo.url} alt={`${airline.name}`} />
+            </Link>
+        )
+    })
+
     return (
-        <div className="row popular-airlines-row pop justify-content-between text-center">
+        <div className="row popular-airlines-row pop">
             <div className="col-sm-12 col-md-7 boxes popular-airlines">
-                <Link to="/">
-                    <img src={ethiopian} alt="ethiopian" />
-                </Link>
-                <Link to="/">
-                    <img src={qatar} alt="qatar" />
-                </Link>
-                <Link to="/">
-                    <img src={airpeace} alt="airpeace" />
-                </Link>
-                <Link to="/">
-                    <img src={delta} alt="delta" />
-                </Link>
-                <Link to="/">
-                    <img src={etihad} alt="etihad" />
-                </Link>
-                <Link to="/">
-                    <img src={turkish} alt="turkish" />
-                </Link>
-                <Link to="/">
-                    <img src={lufthanza} alt="lufthanza" />
-                </Link>
-                <Link to="/">
-                    {" "}
-                    <img src={emirates} alt="emirates" />
-                </Link>
-                <Link to="/">
-                    <img src={virginatlantic} alt="virgin" />
-                </Link>
+                {popularAirlines}
             </div>
             <div className="col-sm col-md signup">
                 <RegisterForm />
