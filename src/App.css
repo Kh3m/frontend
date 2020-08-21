@@ -26,6 +26,9 @@ body {
   height: 100vh;
   margin: 0;
   color: var(--mainBlack);
+  background: var(--mainWhite);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.4;
 }
 #root {
   height: 100%;
@@ -75,26 +78,33 @@ h2 {
   margin-bottom: 0.75em;
 }
 h3 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: bold;
+  letter-spacing: var(--mainSpacing);
+  text-transform: uppercase;
+}
+h4 {
   font-size: 1.8rem;
+  line-height: 1.25;
   margin-bottom: 1rem;
   font-weight: bold;
   letter-spacing: var(--mainSpacing);
   text-transform: capitalize;
 }
-h4 {
-  font-size: 1.2em;
-  line-height: 1.25;
-  margin-bottom: 1.25em;
-}
 h5 {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 1.5em;
 }
 h6 {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 1.5em;
+}
+p {
+  font-size: 1.7rem;
 }
 .boxes {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -389,7 +399,7 @@ h6 {
     margin: 0 0.5rem;
   }
   .dropdown-div {
-    position: inherit;
+    position: relative;
     width: 100%;
     left: 0;
   }
@@ -461,6 +471,12 @@ h6 {
   background-size: cover;
   position: relative;
 }
+.dest-banner {
+  background: url("./images/banner1.jpg") center/cover no-repeat;
+}
+.airline-banner {
+  background: url("./images/banner3.jpg") center/cover no-repeat;
+}
 .banner-row {
   height: 90vh;
 }
@@ -474,19 +490,9 @@ h6 {
 }
 .section {
   display: contents;
-  /* padding: 0.5rem 0;
-  background: var(--mainGrey);
-  text-align: center;
-  width: 100%; */
+  position: relative;
+  z-index: 1;
 }
-/* .section > div {
-  width: auto;
-} */
-/* @media only screen and (min-width: 768px) {
-  .section {
-    padding: 2rem 0;
-  }
-} */
 /**********************************END SECTION*********************************************** *
 *
 *
@@ -634,6 +640,62 @@ h6 {
   color: #fff;
   text-shadow: 2px 2px 1px #000;
 }
-/* @media only screen and (min-width: 768px) {
-  }
-} */
+/* ***************************************************END Slider
+*
+*
+*
+************************************************************** Featured City */
+.featured-city,
+.featured-airline {
+  margin: 3rem auto;
+}
+.featured-city img {
+  max-width: 100%;
+  height: auto;
+}
+.featured-city .boxes {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 2rem;
+  margin: 2rem;
+  align-items: center;
+}
+.img-row {
+  padding: 2rem 0;
+  margin: 2re auto;
+}
+.featured-facts {
+  display: grid;
+  margin: 2rem auto;
+  padding: 2rem 3rem;
+  background: var(--mainGrey);
+}
+.featured-facts h4 {
+  text-align: center;
+}
+.featured-facts ul {
+  padding: 0.5rem;
+  list-style: circle;
+  text-align: left;
+}
+.featured-facts ul li {
+  margin: 1rem;
+  padding: 0.5rem;
+}
+/* ***************************************************END Featured City
+*
+*
+*
+************************************************************** Featured Airline */
+.airline-logo {
+  max-width: 4rem;
+  height: auto;
+  padding: 1rem;
+}
+.city-row > div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

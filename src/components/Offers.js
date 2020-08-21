@@ -35,7 +35,7 @@ export default function Offers() {
                 return (
                     <article key={index} className="service">
                         <span>{item.icon}</span>
-                        <h3>{item.title}</h3>
+                        <h4>{item.title}</h4>
                         <p>{item.info}</p>
                     </article>
                 );

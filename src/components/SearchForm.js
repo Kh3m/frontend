@@ -232,6 +232,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
               </div>
             </div>
             <input type="hidden" name="travelClass" value={travelClass} onChange={(e) => handleChange(e)} />
+            <div className="clearfix" />
           </li>
         </ul>
       </form>

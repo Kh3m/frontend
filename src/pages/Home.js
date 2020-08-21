@@ -5,7 +5,7 @@ import PopularAirlines from '../components/PopularAirlines'
 import Offers from '../components/Offers'
 import PopularDestinations from '../components/PopularDestinations'
 
-export default function Home({ data, handleChange, handleDatePicker }) {
+export default function Home({ data, handleChange, handleDatePicker, cities, airlines }) {
     return (
         <div className="container-fluid">
             <Banner bannerStyle="home-banner">
@@ -14,13 +14,15 @@ export default function Home({ data, handleChange, handleDatePicker }) {
                     handleDatePicker={handleDatePicker} />
             </Banner>
             <section className="section clearfix">
-                <PopularAirlines />
+                <PopularAirlines
+                    airlines={airlines} />
             </section>
             <section className="offers-section section clearfix">
                 <Offers />
             </section>
             <section className="popular-cities section clearfix">
-                <PopularDestinations />
+                <PopularDestinations
+                    cities={cities} />
             </section>
         </div>
 

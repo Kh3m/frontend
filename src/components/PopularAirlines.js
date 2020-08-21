@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm'
-import axios from 'axios'
 
 
-export default function PopularAirlines() {
 
-    const [airlines, setAirlines] = useState([]);
-
-    useEffect(() => {
-        const fetchAirlines = async () => {
-            const { data } = await axios.get("/api/airlines");
-            setAirlines(data)
-        }
-        fetchAirlines();
-    }, [])
+export default function PopularAirlines({ airlines }) {
     const popularAirlines = airlines.map((airline, indx) => {
         return (
             <Link to={`/airlines/${airline.name}`} key={indx}>
