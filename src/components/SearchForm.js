@@ -3,12 +3,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faCalendarAlt, faUser, faBriefcase } from '@fortawesome/free-solid-svg-icons'
 import DatePicker from 'react-datepicker'
 
-export default function SearchForm({ data, handleDatePicker, handleChange }) {
+export default function SearchForm({ data,
+  handleDatePicker,
+  handleChange,
+  suggestions,
+  suggestionOnSelect,
+  inputOrigin,
+  inputDestination,
+  visibleOrigin,
+  visibleDestination,
+  loading,
+  handleSubmit,
+}) {
 
-  const { origin,
-    destination,
-    departureDate,
-    arrivalDate } = data
+  const { departureDate, arrivalDate } = data
+
 
   const [roundTrip, setRoundTrip] = useState(true)
 
@@ -41,18 +50,19 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
     }
   }
 
+
+
+
   return (
     <div className="form">
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className="trip-dir-btn">
-          <div className={roundTrip ? "btn btn-info active" : "btn btn-info"}
-            onClick={() => { !roundTrip && setRoundTrip(!roundTrip) }} >Round Trip</div>
-          <div className={!roundTrip ? "btn btn-info active" : "btn btn-info"}
-            onClick={() => { roundTrip && setRoundTrip(!roundTrip); }}>One Way</div>
-          <input type="hidden"
-            name="tripDirection"
-            value={roundTrip ? "roundTrip" : "oneWay"}
-            onChange={(e) => handleChange(e)} />
+          <button type="button" className={roundTrip ? "btn btn-info active" : "btn btn-info"}
+            value="roundTrip"
+            onClick={(e) => { !roundTrip && setRoundTrip(!roundTrip); handleChange(e, 'tripDirection') }} >Round Trip</button>
+          <button type="button" className={!roundTrip ? "btn btn-info active" : "btn btn-info"}
+            value="oneWay"
+            onClick={(e) => { roundTrip && setRoundTrip(!roundTrip); handleChange(e, 'tripDirection') }}>One Way</button>
         </div>
         <ul className="form-container">
           <li className="form-list">
@@ -63,11 +73,28 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                   placeholder="Flying From"
                   type="text"
                   name="origin"
-                  id="origin"
-                  value={origin}
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => {
+                    handleChange(e, 'origin');
+                  }}
+                  value={visibleOrigin}
                 />
+
               </div>
+
+              {!loading && inputOrigin && suggestions.length > 0 ?
+
+                <ul className="autoComplete list-group">
+                  {suggestions.map((item, index) => <li key={index}
+                    onClick={() => {
+                      // setVisibleOrigin(`${item.name}, ${item.country_name}`); 
+                      suggestionOnSelect(item.code, 'origin', `${item.name}, ${item.country_name}`);
+                    }}
+                    className="list-group-item autocomplete-list"><i className="fa fa-map-marker mx-info mx-2"></i>{item.name}, &nbsp;
+                        {item.country_name}&nbsp;
+                        <span className="badge badge-pill badge-info autocomplete-badge"> {item.code} </span>
+                  </li>)}
+                </ul> : null
+              }
 
             </div>
 
@@ -79,9 +106,22 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                   type="text"
                   name="destination"
                   id="destination"
-                  value={destination}
-                  onChange={(e) => handleChange(e)}
+                  value={visibleDestination}
+                  onChange={(e) => handleChange(e, 'destination')}
                 />
+                {!loading && inputDestination && suggestions.length > 0 ?
+
+                  <ul className="autoComplete list-group">
+                    {suggestions.map((item, index) => <li key={index}
+                      onClick={() => {
+                        suggestionOnSelect(item.code, 'destination', `${item.name}, ${item.country_name}`);
+                      }}
+                      className="list-group-item autocomplete-list"><i className="fa fa-map-marker mx-info mx-2"></i>{item.name}, &nbsp;
+        {item.country_name}&nbsp;
+        <span className="badge badge-pill badge-info autocomplete-badge"> {item.code} </span>
+                    </li>)}
+                  </ul> : null
+                }
               </div>
 
             </div>
@@ -129,7 +169,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
           </li>
           <li className="form-list" ref={passengerRef}>
             <div className="select-list btn no-outline">
-              <div className="input-div" onClick={() => setPassengerOpen(!passengerOpen)}>
+              <div className="input-div" onClick={() => setPassengerOpen(!passengerOpen)} >
                 <FontAwesomeIcon icon={faUser} className="input-icons"></FontAwesomeIcon>
                 {passengerCount} {passengerCount > 1 ? 'Passengers' : 'Passenger'}
               </div>
@@ -145,6 +185,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                         onClick={() => {
                           adultCount > 1 && setAdultCount(adultCount - 1);
                           adultCount > 1 && passengerCount > 1 && setPassengerCount(passengerCount - 1)
+                          handleChange(adultCount, 'adults')
                         }}
                         className="span-pill"
                       > - </span>
@@ -153,6 +194,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                         onClick={() => {
                           setAdultCount(adultCount + 1);
                           setPassengerCount(passengerCount + 1)
+                          handleChange(adultCount, 'adults')
                         }}
                         className="span-pill"
                       > + </span>
@@ -169,6 +211,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                         onClick={() => {
                           childrenCount > 0 && setChildrenCount(childrenCount - 1);
                           childrenCount > 0 && passengerCount > 1 && setPassengerCount(passengerCount - 1)
+                          handleChange(childrenCount, 'children')
                         }}
                         className="span-pill"
                       > - </span>
@@ -177,6 +220,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                         onClick={() => {
                           setChildrenCount(childrenCount + 1);
                           setPassengerCount(passengerCount + 1)
+                          handleChange(childrenCount, 'children')
                         }}
                         className="span-pill"
                       > + </span>
@@ -192,6 +236,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                         onClick={() => {
                           infantCount > 0 && setInfantCount(infantCount - 1);
                           infantCount > 0 && passengerCount > 1 && setPassengerCount(passengerCount - 1)
+                          handleChange(infantCount, 'infants')
                         }}
                         className="span-pill"
                       > - </span>
@@ -200,6 +245,7 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                         onClick={() => {
                           setInfantCount(infantCount + 1);
                           setPassengerCount(passengerCount + 1)
+                          handleChange(infantCount, 'infants')
                         }}
                         className="span-pill"
                       > + </span>
@@ -208,9 +254,6 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                   </li>
                 </ul>
               </div>
-              <input type="hidden" name="adults" value={adultCount} onChange={(e) => handleChange(e)} />
-              <input type="hidden" name="children" value={childrenCount} onChange={(e) => handleChange(e)} />
-              <input type="hidden" name="infants" value={infantCount} onChange={(e) => handleChange(e)} />
             </div>
             <div className="clearfix" />
           </li>
@@ -223,16 +266,18 @@ export default function SearchForm({ data, handleDatePicker, handleChange }) {
                 {travelClass}
                 <div className={travelClassOpen ? "dropdown-div" : "hidden"}>
                   <ul className="list-group dropdown-list">
-                    <li className="list-group-item" onClick={() => setTravelClass("Economy")}>Economy</li>
-                    <li className="list-group-item" onClick={() => setTravelClass("Premium Economy")}>Premium Economy</li>
-                    <li className="list-group-item" onClick={() => setTravelClass("Business Class")}>Business Class</li>
-                    <li className="list-group-item" onClick={() => setTravelClass("First Class")}>First Class</li>
+                    <li className="list-group-item" onClick={() => { setTravelClass("Economy"); handleChange('economy', 'tripClass') }}>Economy</li>
+                    <li className="list-group-item" onClick={() => { setTravelClass("Premium Economy"); handleChange('premiumEconomy', 'tripClass') }}>Premium Economy</li>
+                    <li className="list-group-item" onClick={() => { setTravelClass("Business Class"); handleChange('businessClass', 'tripClass') }}>Business Class</li>
+                    <li className="list-group-item" onClick={() => { setTravelClass("First Class"); handleChange('firstClass', 'tripClass') }}>First Class</li>
                   </ul>
                 </div>
               </div>
             </div>
-            <input type="hidden" name="travelClass" value={travelClass} onChange={(e) => handleChange(e)} />
             <div className="clearfix" />
+          </li>
+          <li>
+            <button type="submit" className="btn btn-info active">Submit</button>
           </li>
         </ul>
       </form>

@@ -4,7 +4,19 @@ import Banner from '../components/Banner'
 import { useParams } from 'react-router-dom'
 
 
-export default function FeaturedDestination({ data, handleChange, handleDatePicker, cities }) {
+export default function FeaturedDestination({
+    data,
+    handleDatePicker,
+    handleChange,
+    suggestions,
+    suggestionOnSelect,
+    inputOrigin,
+    inputDestination,
+    visibleOrigin,
+    visibleDestination,
+    loading,
+    handleSubmit,
+    cities }) {
     const { slug } = useParams()
     const city = { ...cities.find(x => x.name === slug) }
     const { extras } = city
@@ -12,9 +24,19 @@ export default function FeaturedDestination({ data, handleChange, handleDatePick
     return (
         <div className="container-fluid">
             <Banner bannerStyle="home-banner dest-banner">
-                <SearchForm data={data}
+                <SearchForm
+                    data={data}
                     handleChange={handleChange}
-                    handleDatePicker={handleDatePicker} />
+                    handleDatePicker={handleDatePicker}
+                    suggestions={suggestions}
+                    suggestionOnSelect={suggestionOnSelect}
+                    inputOrigin={inputOrigin}
+                    inputDestination={inputDestination}
+                    loading={loading}
+                    visibleOrigin={visibleOrigin}
+                    visibleDestination={visibleDestination}
+                    handleSubmit={handleSubmit}
+                />
             </Banner>
             <div className="container featured-city">
 

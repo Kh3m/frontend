@@ -129,7 +129,7 @@ p {
   left: 0;
   width: 100%;
   background: var(--offWhite);
-  z-index: 2;
+  z-index: 20;
   padding: 0 2rem;
 }
 .nav-img {
@@ -382,6 +382,14 @@ p {
   border-color: rgb(23, 164, 186) !important;
   background-color: var(--secondaryColor) !important;
   color: var(--mainWhite) !important;
+}
+.autoComplete {
+  position: absolute;
+  z-index: 8;
+  top: 5rem;
+  width: max-content;
+  max-height: 18rem;
+  overflow: scroll;
 }
 @media only screen and (min-width: 768px) {
   .form-container {

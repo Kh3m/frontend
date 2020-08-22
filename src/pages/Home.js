@@ -5,13 +5,34 @@ import PopularAirlines from '../components/PopularAirlines'
 import Offers from '../components/Offers'
 import PopularDestinations from '../components/PopularDestinations'
 
-export default function Home({ data, handleChange, handleDatePicker, cities, airlines }) {
+export default function Home({
+    data,
+    handleDatePicker,
+    handleChange,
+    suggestions,
+    suggestionOnSelect,
+    inputOrigin,
+    inputDestination,
+    visibleOrigin,
+    visibleDestination,
+    handleSubmit,
+    loading, cities, airlines }) {
     return (
         <div className="container-fluid">
             <Banner bannerStyle="home-banner">
-                <SearchForm data={data}
+                <SearchForm
+                    data={data}
                     handleChange={handleChange}
-                    handleDatePicker={handleDatePicker} />
+                    handleDatePicker={handleDatePicker}
+                    suggestions={suggestions}
+                    suggestionOnSelect={suggestionOnSelect}
+                    inputOrigin={inputOrigin}
+                    inputDestination={inputDestination}
+                    loading={loading}
+                    visibleOrigin={visibleOrigin}
+                    visibleDestination={visibleDestination}
+                    handleSubmit={handleSubmit}
+                />
             </Banner>
             <section className="section clearfix">
                 <PopularAirlines
