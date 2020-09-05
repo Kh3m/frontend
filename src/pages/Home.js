@@ -1,38 +1,17 @@
 import React from 'react'
-import SearchForm from '../components/SearchForm'
 import Banner from '../components/Banner'
 import PopularAirlines from '../components/PopularAirlines'
 import Offers from '../components/Offers'
 import PopularDestinations from '../components/PopularDestinations'
+import FormHandler from '../components/FormHandler'
 
 export default function Home({
-    data,
-    handleDatePicker,
-    handleChange,
-    suggestions,
-    suggestionOnSelect,
-    inputOrigin,
-    inputDestination,
-    visibleOrigin,
-    visibleDestination,
-    handleSubmit,
-    loading, cities, airlines }) {
+    cities,
+    airlines }) {
     return (
         <div className="container-fluid">
             <Banner bannerStyle="home-banner">
-                <SearchForm
-                    data={data}
-                    handleChange={handleChange}
-                    handleDatePicker={handleDatePicker}
-                    suggestions={suggestions}
-                    suggestionOnSelect={suggestionOnSelect}
-                    inputOrigin={inputOrigin}
-                    inputDestination={inputDestination}
-                    loading={loading}
-                    visibleOrigin={visibleOrigin}
-                    visibleDestination={visibleDestination}
-                    handleSubmit={handleSubmit}
-                />
+                <FormHandler />
             </Banner>
             <section className="section clearfix">
                 <PopularAirlines

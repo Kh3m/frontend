@@ -1,45 +1,19 @@
 import React from 'react'
-import SearchForm from '../components/SearchForm'
 import Banner from '../components/Banner'
 import { useParams } from 'react-router-dom'
+import FormHandler from '../components/FormHandler'
 
 
-export default function FeaturedAirlines({
-    data,
-    handleDatePicker,
-    handleChange,
-    suggestions,
-    suggestionOnSelect,
-    inputOrigin,
-    inputDestination,
-    visibleOrigin,
-    visibleDestination,
-    loading,
-    airlines,
-    handleSubmit }) {
+export default function FeaturedAirlines({ airlines }) {
     const { slug } = useParams()
     let airline = { ...airlines.find(x => x.name === slug) }
     airline = { ...airline, logo: { ...airline.logo } }
-    // console.log(airline.logo.url)
-    // const { logo: { url } } = airline
     const { url } = airline.logo
     console.log(url)
     return (
         <div className="container-fluid">
             <Banner bannerStyle="home-banner airline-banner">
-                <SearchForm
-                    data={data}
-                    handleChange={handleChange}
-                    handleDatePicker={handleDatePicker}
-                    suggestions={suggestions}
-                    suggestionOnSelect={suggestionOnSelect}
-                    inputOrigin={inputOrigin}
-                    inputDestination={inputDestination}
-                    loading={loading}
-                    visibleOrigin={visibleOrigin}
-                    visibleDestination={visibleDestination}
-                    handleSubmit={handleSubmit}
-                />
+                <FormHandler />
             </Banner>
             <div className="container featured-airline">
 

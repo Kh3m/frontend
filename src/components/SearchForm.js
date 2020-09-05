@@ -14,6 +14,7 @@ export default function SearchForm({ data,
   visibleDestination,
   loading,
   handleSubmit,
+  handlePassengerCount,
 }) {
 
   const { departureDate, arrivalDate } = data
@@ -184,8 +185,8 @@ export default function SearchForm({ data,
                       <span
                         onClick={() => {
                           adultCount > 1 && setAdultCount(adultCount - 1);
-                          adultCount > 1 && passengerCount > 1 && setPassengerCount(passengerCount - 1)
-                          handleChange(adultCount, 'adults')
+                          adultCount > 1 && passengerCount > 1 && setPassengerCount(passengerCount - 1);
+                          handlePassengerCount(adultCount, 'adults', 'minus');
                         }}
                         className="span-pill"
                       > - </span>
@@ -193,8 +194,8 @@ export default function SearchForm({ data,
                       <span
                         onClick={() => {
                           setAdultCount(adultCount + 1);
-                          setPassengerCount(passengerCount + 1)
-                          handleChange(adultCount, 'adults')
+                          setPassengerCount(passengerCount + 1);
+                          handlePassengerCount(adultCount, 'adults', 'add');
                         }}
                         className="span-pill"
                       > + </span>
@@ -210,8 +211,8 @@ export default function SearchForm({ data,
                       <span
                         onClick={() => {
                           childrenCount > 0 && setChildrenCount(childrenCount - 1);
-                          childrenCount > 0 && passengerCount > 1 && setPassengerCount(passengerCount - 1)
-                          handleChange(childrenCount, 'children')
+                          childrenCount > 0 && passengerCount > 1 && setPassengerCount(passengerCount - 1);
+                          handlePassengerCount(childrenCount, 'children', 'minus');
                         }}
                         className="span-pill"
                       > - </span>
@@ -219,8 +220,8 @@ export default function SearchForm({ data,
                       <span
                         onClick={() => {
                           setChildrenCount(childrenCount + 1);
-                          setPassengerCount(passengerCount + 1)
-                          handleChange(childrenCount, 'children')
+                          setPassengerCount(passengerCount + 1);
+                          handlePassengerCount(childrenCount, 'children', 'add');
                         }}
                         className="span-pill"
                       > + </span>
@@ -235,8 +236,8 @@ export default function SearchForm({ data,
                       <span
                         onClick={() => {
                           infantCount > 0 && setInfantCount(infantCount - 1);
-                          infantCount > 0 && passengerCount > 1 && setPassengerCount(passengerCount - 1)
-                          handleChange(infantCount, 'infants')
+                          infantCount > 0 && passengerCount > 1 && setPassengerCount(passengerCount - 1);
+                          handlePassengerCount(infantCount, 'infants', 'minus');
                         }}
                         className="span-pill"
                       > - </span>
@@ -244,8 +245,8 @@ export default function SearchForm({ data,
                       <span
                         onClick={() => {
                           setInfantCount(infantCount + 1);
-                          setPassengerCount(passengerCount + 1)
-                          handleChange(infantCount, 'infants')
+                          setPassengerCount(passengerCount + 1);
+                          handlePassengerCount(infantCount, 'infants', 'add');
                         }}
                         className="span-pill"
                       > + </span>

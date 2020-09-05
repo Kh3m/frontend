@@ -707,3 +707,99 @@ p {
   justify-content: center;
   align-items: flex-end;
 }
+/* 
+*
+*
+*
+/********************************************************* ACCORDION */
+.accordMobile {
+  font-size: 1rem;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: background-color 0.6s ease;
+}
+
+.accordion ul {
+  list-style: none;
+  margin: 0 auto;
+  display: grid;
+  grid-row-gap: 1rem;
+}
+.accordMobile div {
+  display: flex;
+}
+.accordion ul li img {
+  display: block;
+  max-width: 1.5rem;
+}
+.accordion.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+.panel {
+  background-color: white;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+.accordion .btn:hover {
+  background-color: var(--mainWhite);
+  color: var(--mainBlack);
+}
+
+.accordion:after {
+  content: "more info \002B";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+  font-size: 0.8rem;
+  transition: content 0.6s ease-out;
+}
+
+.accordion.active:after {
+  content: "less \2212";
+  font-size: 0.8rem;
+  transition: content 0.6s ease-out;
+}
+.accordionRow {
+  margin: 0 2rem;
+  padding: 0.5rem;
+}
+.accordionCont {
+  background-color: var(--mainWhite);
+}
+@media screen and (min-width: 768px) {
+  .accordion ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-row-gap: 2rem;
+    grid-column-gap: 50px;
+  }
+  .accordion:after {
+    margin-top: 15px;
+  }
+  .accordion ul li img {
+    max-width: 1.8em;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .accordMobile {
+    font-size: 1em;
+  }
+  .accordion ul {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
