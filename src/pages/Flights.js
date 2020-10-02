@@ -33,13 +33,25 @@ export default function FlightsContainer() {
                 <FormHandler />
             </Banner>
             <section className="section clearfix">
-                <FlightsFilter
-                    flightSchedules={flightSchedules}
-                />
-                <FlightsList
-                    flightSchedules={flightSchedules}
-                    storageData={storageData}
-                />
+                <div className="flights-sidebar-container">
+                    <div className="sidebar-row">
+                        <div className="side-bar-drawer">
+                            <div className="sidebar-title">
+                                <span className="close-sidebar">x</span>
+                            </div>
+                            <FlightsFilter
+                                flightSchedules={flightSchedules}
+                            />
+                        </div>
+                    </div>
+                    <div className="modal-backdrop"></div>
+                    <div className="main-content-row"></div>
+                    <FlightsList
+                        flightSchedules={flightSchedules}
+                        storageData={storageData}
+                    />
+                </div>
+
             </section>
 
         </div>

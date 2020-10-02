@@ -106,6 +106,9 @@ h6 {
 p {
   font-size: 1.7rem;
 }
+.btn-info {
+  font-size: 1.5rem;
+}
 .boxes {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -712,6 +715,18 @@ p {
 *
 *
 /********************************************************* ACCORDION */
+.accordion-row {
+  margin: 4rem;
+  padding: 3rem;
+}
+#content-ul {
+  display: flex;
+}
+.accordion-content {
+  margin: 0 5rem;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+}
 .accordMobile {
   font-size: 1rem;
 }
@@ -761,14 +776,14 @@ p {
   color: #777;
   font-weight: bold;
   float: right;
-  margin-left: 5px;
-  font-size: 0.8rem;
+  margin: 0 2rem;
+  font-size: 1rem;
   transition: content 0.6s ease-out;
 }
 
 .accordion.active:after {
   content: "less \2212";
-  font-size: 0.8rem;
+  font-size: 1rem;
   transition: content 0.6s ease-out;
 }
 .accordionRow {
@@ -777,6 +792,11 @@ p {
 }
 .accordionCont {
   background-color: var(--mainWhite);
+}
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show > .btn-secondary.dropdown-toggle {
+  background-color: #ccc;
 }
 @media screen and (min-width: 768px) {
   .accordion ul {
@@ -794,7 +814,8 @@ p {
 }
 
 @media screen and (min-width: 992px) {
-  .accordMobile {
+  .accordMobile,
+  .accordion-content {
     font-size: 1em;
   }
   .accordion ul {

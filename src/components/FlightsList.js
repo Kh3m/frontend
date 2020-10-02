@@ -5,7 +5,8 @@ export default function FlightsList({ flightSchedules, storageData }) {
 
 
     const dest = { ...flightSchedules }
-    console.log(typeof (dest))
+    console.log(dest)
+
 
     const results = Object.values(dest).map((match, i) => {
         const inner = Object.values(match).map((item, j) => {
@@ -13,10 +14,10 @@ export default function FlightsList({ flightSchedules, storageData }) {
                 <div className="row" key={i}>
                     <Accordion
                         content={`
-            <ul>
-                      <li>Adults: ${storageData.adults}</li>
-                      <li>Children: ${storageData.children}</li>
-                      <li>Infants: ${storageData.infants}</li>
+            <ul class="d-flex p-3">
+                      <li class="accordion-content">Adults: ${storageData.adults}</li>
+                      <li class="accordion-content">Children: ${storageData.children}</li>
+                      <li class="accordion-content">Infants: ${storageData.infants}</li>
                     </ul>
             `}>
                         <ul>
@@ -27,8 +28,8 @@ export default function FlightsList({ flightSchedules, storageData }) {
                             <li className="accordMobile"><div>Return: {item.return_at}</div></li>
                             <li className="accordMobile"><div>Flight Number: {item.flight_number}</div></li>
                             <li className="accordMobile"><div>Price: ${item.price}.00</div></li>
-                            <li className="accordMobile"><button type="submit" className="btn btn-primary">Select</button></li>
                         </ul>
+                        <button type="submit" className="btn btn-info float-right">Select</button>
                     </Accordion>
                 </div>
             )
@@ -39,7 +40,7 @@ export default function FlightsList({ flightSchedules, storageData }) {
     })
 
     return (
-        <div>
+        <div className="accordion-row">
             {results}
         </div>
     )
