@@ -10,6 +10,12 @@ export default function FlightsList({ flightSchedules, storageData }) {
 
     const results = Object.values(dest).map((match, i) => {
         const inner = Object.values(match).map((item, j) => {
+            let deprt = new Intl.DateTimeFormat('en-us',
+                { year: 'numeric', month: 'short', day: '2-digit', hour: 'numeric', minute: '2-digit' })
+                .format(new Date(Date.parse(item.departure_at)))
+            let ret = new Intl.DateTimeFormat('en-us',
+                { year: 'numeric', month: 'short', day: '2-digit', hour: 'numeric', minute: '2-digit' })
+                .format(new Date(Date.parse(item.return_at)))
             return (
                 <div className="row" key={i}>
                     <Accordion
@@ -24,8 +30,8 @@ export default function FlightsList({ flightSchedules, storageData }) {
                             <li><div>From: {storageData.origin}</div></li>
                             <li><div>To: {storageData.destination}</div></li>
                             <li className="accordMobile"><div>Airline: {item.airline} &nbsp;</div></li>
-                            <li className="accordMobile"><div>Departure: {item.departure_at}</div></li>
-                            <li className="accordMobile"><div>Return: {item.return_at}</div></li>
+                            <li className="accordMobile"><div>Departure: {deprt}</div></li>
+                            <li className="accordMobile"><div>Return: {ret}</div></li>
                             <li className="accordMobile"><div>Flight Number: {item.flight_number}</div></li>
                             <li className="accordMobile"><div>Price: ${item.price}.00</div></li>
                         </ul>

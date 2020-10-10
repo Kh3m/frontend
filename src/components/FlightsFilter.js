@@ -1,77 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CustomRangeSlider from './CustomSlider/CustomRangeSlider'
 
 
 
-export default function FlightsFilter() {
+export default function FlightsFilter({ flightSchedules, storageData }) {
 
-
+    const dest = { ...flightSchedules }
     // console.log(departureTime, arrivalTime)
+    const [min, setMin] = useState(0)
+    const [max, setMax] = useState(100)
 
-
-    //Get unique airlines available
-    //   availableAirlines = availableAirlines.map((airline, key) => {
-    //     return (
-    //       <div className="checkbox" key={key}>
-    //         <label><input type="checkbox" name="selectedAirlines" onClick={handleChange} value={airline} />{airline}</label>
-    //       </div>
-    //     )
-    //   })
     return (
         <>
             <div className="sort-title">Sort &amp; Filter</div>
             <div className="list-group list-group-flush sort-form" >
-                {/* PRICE */}
                 <div className="list-group-item list-group-item-action bg-light">
-                    <form className="form-control">
-                        <label htmlFor="price">Price: $100</label>
-                        <input type="range" name="price" min="minPrice" max="maxPrice" id="price" value="price"
-                        />
+                    <h5 className="text-center">Price</h5>
+                    {/* PRICE */}
+                    <form className="form-control border-0">
+                        <div>
+                            <CustomRangeSlider type="currency" minValue={min} maxValue={max} trailingStr="$" />
+                        </div>
                     </form>
                 </div>
-
 
                 {/* STOPS */}
                 <div className="list-group-item list-group-item-action bg-light">
-                    <form className="form-control">
-                        <label>Stops</label>
+                    <h5 className="text-center">Stops</h5>
+
+                    <form className="form-control border-0">
                         <div className="checkbox">
-                            <label><input type="checkbox" name="stops" value="1" />1 Stop</label>
+                            <label><input type="checkbox" name="stops" value="1" /> &nbsp;1 Stop</label>
                         </div>
                         <div className="checkbox">
-                            <label><input type="checkbox" name="stops" value="2" />2+ Stop</label>
+                            <label><input type="checkbox" name="stops" value="2" />&nbsp;2+ Stops</label>
                         </div>
                     </form>
                 </div>
 
+
                 {/* AIRLINE */}
                 <div className="list-group-item list-group-item-action bg-light">
-                    <form className="form-control">
-                        <label>Airlines</label>
-                        <label><input type="checkbox" name="selectedAirlines" value="airline" />airline</label>
+                    <h5 className="text-center">Airlines</h5>
+                    <form className="form-control border-0">
+                        <label><input type="checkbox" name="selectedAirlines" value="airline" />&nbsp;airline</label>
                     </form>
                 </div>
 
                 {/* DEPARTURE TIME */}
                 <div className="list-group-item list-group-item-action bg-light">
-                    <form className="form-control">
-                        <label>Depart from -  </label>
-                        <input type="range" name="departureTime" min="minDepartureTime" max="maxDepartureTime" id="departureTime" value="departureTime"
-                        />
-                    </form>
+                    <h5 className="text-center">Flight Times</h5>
+                    <div className="list-group-item list-group-item-action bg-light border-0">
+                        <form className="form-control border-0">
+                            <label>Depart from JFK </label>
+                            <CustomRangeSlider minValue="360" maxValue="1439" type="time" />
+                        </form>
+                    </div>
+                    <div className="list-group-item list-group-item-action bg-light border-0">
+                        {/* ARRIVAL TIME */}
+                        <form className="form-control border-0" >
+                            <label>Arrival at Miami  </label>
+                            <CustomRangeSlider minValue="0" maxValue="359" type="time" />
+                        </form>
+                    </div>
                 </div>
-
-                {/* ARRIVAL TIME */}
-                <div className="list-group-item list-group-item-action bg-light">
-                    <form className="form-control">
-                        <label>Arrival at -  </label>
-                        <input type="range" name="arrivalTime" min="minArrivalTime" max="maxArrivalTime" id="arrivalTime" value="arrivalTime"
-                        />
-                    </form>
-                </div>
-                <div className="list-group-item list-group-item-action bg-light">Hello</div>
-                <div className="list-group-item list-group-item-action bg-light">Hello</div>
-                <div className="list-group-item list-group-item-action bg-light">Hello</div>
             </div>
+
 
         </>
     )
