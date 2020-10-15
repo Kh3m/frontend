@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Banner from '../components/Banner'
 import { useParams } from 'react-router-dom'
 import FormHandler from '../components/FormHandler'
+import Overlay from '../components/Overlay'
+import RegisterForm from '../components/RegisterForm'
 
 
-export default function FeaturedDestination({ cities }) {
+export default function FeaturedDestination({ cities, modalOpen, setModalOpen }) {
     const { slug } = useParams()
     const city = { ...cities.find(x => x.name === slug) }
     const { extras } = city
+    const containerRef = useRef()
 
     return (
         <div className="container-fluid">
             <Banner bannerStyle="home-banner dest-banner">
                 <FormHandler />
             </Banner>
+            {modalOpen && <Overlay innerRef={containerRef} modalOpen={modalOpen} setModalOpen={setModalOpen}>
+                <section className="clearfix position-absolute signup-section" ref={containerRef}>
+                    <RegisterForm />
+                </section>
+            </Overlay>}
             <div className="container featured-city">
 
                 <div className="row city-row">

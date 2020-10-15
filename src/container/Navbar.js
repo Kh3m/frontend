@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter, useLocation, NavLink } from 'react-router-dom'
 import logo from "../images/logo.png";
 
-export default function Navbar() {
+function Navbar({ modalOpen, setModalOpen }) {
+
+    const location = useLocation()
     const [isOpen, setIsOpen] = useState(false)
+    const homeClass = location.pathname.match(/^\/(?!information)(?!contact)(?!about)[\s\S]*$/) ? "active" : ""
+    const infoClass = location.pathname.match(/^\/information/) ? "active" : ""
+    const contactClass = location.pathname.match(/^\/contact/) ? "active" : ""
+    const aboutClass = location.pathname.match(/^\/about/) ? "active" : ""
+
     return (
         <>
             <header className="header">
@@ -23,11 +30,11 @@ export default function Navbar() {
                     &#9776;
         </button>
                 <ul className={isOpen ? "nav-mobile" : "nav-links"}>
-                    <Link to="/"><li>Flights</li></Link>
-                    <Link to="/information"><li>Information</li></Link>
-                    <Link to="/contact"> <li>Contact Us</li></Link>
-                    <Link to="/about"> <li>About Us</li></Link>
-                    <Link to="/login"> <li>Sign in</li></Link>
+                    <Link to="/" className={homeClass}><li>Flights</li></Link>
+                    <Link to="/information" className={infoClass}><li>Information</li></Link>
+                    <Link to="/contact" className={contactClass}><li>Contact Us</li></Link>
+                    <Link to="/about" className={aboutClass}> <li>About Us</li></Link>
+                    <li id="signin" onClick={() => setModalOpen(!modalOpen)} >Sign in</li>
                 </ul>
             </header>
             <div className={isOpen ? "overlay" : "hidden"}></div>
@@ -35,3 +42,4 @@ export default function Navbar() {
 
     )
 }
+export default withRouter(Navbar)

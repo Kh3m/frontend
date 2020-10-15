@@ -173,7 +173,8 @@ p {
 .nav-links {
   display: none;
 }
-.header ul a {
+.header ul a,
+.header ul #signin {
   margin: 0.3rem;
   padding: 0.5rem;
   transition: var(--mainTransition);
@@ -182,10 +183,14 @@ p {
   letter-spacing: var(--mainSpacing);
 }
 
-.header ul a:hover {
+.header ul a:hover,
+.header ul #signin:hover {
   color: var(--primaryColor);
   background: var(--secondaryColor);
   border: solid 1px var(--secondaryColor);
+}
+#signin {
+  cursor: pointer;
 }
 .header ul .active {
   color: var(--primaryColor);
@@ -380,11 +385,15 @@ p {
   background-color: var(--offWhite) !important;
   color: var(--mainBlack) !important;
 }
+
 .btn-outline-purple,
 .trip-dir-btn .active {
   border-color: rgb(23, 164, 186) !important;
   background-color: var(--secondaryColor) !important;
   color: var(--mainWhite) !important;
+}
+.btn-outline-purple:hover {
+  background: var(--tertiaryColor);
 }
 .autoComplete {
   position: absolute;
@@ -530,12 +539,37 @@ p {
   border: solid 1px var(--offWhite);
   border-radius: 20%;
 }
+.signup-section {
+  top: 35%;
+  left: 30%;
+  width: 40%;
+  z-index: 10;
+}
+.signup-div {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+.signup-div > label {
+  font-size: 1.2rem;
+  max-width: 25%;
+  text-align: justify;
+}
 .signup-input {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   height: 3rem;
   line-height: 3rem;
 }
+
+.signup-link {
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+.signup-link:hover {
+  color: var(--primaryColor);
+}
+
 .btn-outline-purple {
   font-size: 1.8rem;
   font-weight: 600;
@@ -852,7 +886,7 @@ p {
 .sort-form form {
   display: contents;
 }
-.form-control,
+.list-group-item.form-control,
 .custom-select {
   width: 100%;
   background: var(--offWhite);

@@ -7,6 +7,7 @@ import Flights from '../pages/Flights';
 import Information from '../pages/Information';
 import FeaturedAirlines from '../pages/FeaturedAirlines';
 import FeaturedDestination from '../pages/FeaturedDestination';
+import SignUp from '../pages/SignUp';
 
 
 class Main extends Component {
@@ -54,27 +55,37 @@ class Main extends Component {
               render={props => (<Home {...props}
                 cities={this.state.cities}
                 airlines={this.state.airlines}
-                data={this.state.data} />)}
+                data={this.state.data}
+                modalOpen={this.props.modalOpen}
+                setModalOpen={this.props.setModalOpen} />)}
             />
 
             <Route exact={true} path="/flights/:slug"
-              render={props => (<Flights {...props} />)}
+              render={props => (<Flights {...props}
+                modalOpen={this.props.modalOpen}
+                setModalOpen={this.props.setModalOpen}
+              />)}
             />
 
-            <Route exact={true} path="/information/"
-              render={props => (<Information {...props} />)}
+            <Route exact={true} path="/information"
+              render={props => (<Information {...props}
+                modalOpen={this.props.modalOpen}
+                setModalOpen={this.props.setModalOpen} />)}
             />
 
             <Route exact={true} path="/airlines/:slug"
               render={props => (<FeaturedAirlines {...props}
-                airlines={this.state.airlines} />)}
+                airlines={this.state.airlines}
+                modalOpen={this.props.modalOpen}
+                setModalOpen={this.props.setModalOpen} />)}
             />
 
             <Route exact={true} path="/destination/:slug"
               render={props => (<FeaturedDestination {...props}
-                cities={this.state.cities} />)}
+                cities={this.state.cities}
+                modalOpen={this.props.modalOpen}
+                setModalOpen={this.props.setModalOpen} />)}
             />
-
             <Route component={Error} />
           </Switch>
         </main>

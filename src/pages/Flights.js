@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import Banner from '../components/Banner'
 import FormHandler from '../components/FormHandler'
 import FlightsFilter from '../components/FlightsFilter'
 import FlightsList from '../components/FlightsList'
+import Overlay from '../components/Overlay'
+import RegisterForm from '../components/RegisterForm'
 
-export default function FlightsContainer() {
+export default function FlightsContainer({ modalOpen, setModalOpen }) {
+
+    const containerRef = useRef()
 
     const [flightSchedules, setFlightSchedules] = useState([])
     const [storageData, setStorageData] = useState([])
@@ -33,6 +37,11 @@ export default function FlightsContainer() {
             <Banner bannerStyle="home-banner">
                 <FormHandler />
             </Banner>
+            {modalOpen && <Overlay innerRef={containerRef} modalOpen={modalOpen} setModalOpen={setModalOpen}>
+                <section className="clearfix position-absolute signup-section" ref={containerRef}>
+                    <RegisterForm />
+                </section>
+            </Overlay>}
             <section className="section clearfix">
                 <div className="flights-sidebar-container">
                     <div className="sidebar-row">
