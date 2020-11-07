@@ -1,9 +1,10 @@
-import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../shared/baseUrl'
+import * as ActionTypes from '../ActionTypes';
+import { baseUrl } from '../../shared/baseUrl'
+
 
 //POPULAR CITIES... 
-export const fetchCities = () => dispatch => {
-    return fetch(baseUrl + 'cities')
+export const fetchCities = () => async (dispatch) => {
+    return fetch('api/cities')
         .then(response => {
             if (response.ok)
                 return response
@@ -30,3 +31,6 @@ export const citiesSuccess = cities => ({
     type: ActionTypes.POPULARCITIES_SUCCESS,
     payload: cities,
 })
+
+
+

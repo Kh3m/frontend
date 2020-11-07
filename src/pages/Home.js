@@ -11,7 +11,9 @@ export default function Home({
     cities,
     airlines,
     modalOpen,
-    setModalOpen }) {
+    setModalOpen,
+    userInfo,
+    userReg }) {
 
     const containerRef = useRef()
     return (
@@ -21,7 +23,7 @@ export default function Home({
             </Banner>
             {modalOpen && <Overlay innerRef={containerRef} modalOpen={modalOpen} setModalOpen={setModalOpen}>
                 <section className="clearfix position-absolute signup-section" ref={containerRef}>
-                    <RegisterForm />
+                    <RegisterForm setModalOpen={setModalOpen} modalOpen={modalOpen} userInfo={userInfo} userReg={userReg} />
                 </section>
             </Overlay>}
             <section className="section clearfix">

@@ -277,10 +277,10 @@ export default function SearchForm({ data,
             </div>
             <div className="clearfix" />
           </li>
-          <li>
-            <button type="submit" className="btn btn-info active">Submit</button>
-          </li>
         </ul>
+        <div className="text-center pt-3">
+          <button type="submit" className="btn btn-info active">Submit</button>
+        </div>
       </form>
     </div>
   );

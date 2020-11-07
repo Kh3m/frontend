@@ -12,7 +12,7 @@ export default function Overlay({ children, innerRef, modalOpen, setModalOpen })
         if (modalOpen) {
             if (!innerRef.current.contains(e.target)) {
                 setModalOpen(!modalOpen)
-                // setIsOpen(!isOpen)
+
             }
         }
     }
