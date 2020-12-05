@@ -17,7 +17,7 @@ export default function FlightsList({ flightSchedules, storageData }) {
                 { year: 'numeric', month: 'short', day: '2-digit', hour: 'numeric', minute: '2-digit' })
                 .format(new Date(Date.parse(item.return_at)))
             return (
-                <div className="row" key={i}>
+                <div className="row mb-5" key={j}>
                     <Accordion
                         content={`
             <ul class="d-flex p-3">

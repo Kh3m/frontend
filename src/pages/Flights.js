@@ -17,10 +17,18 @@ export default function FlightsContainer({ modalOpen, setModalOpen }) {
 
     const data = localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : {}
     let { tripDirection, origin, destination, departureDate, arrivalDate } = data
+    let depYr = new Date(departureDate).getFullYear()
+    let depMnth = (new Date(departureDate).getMonth() + 1) > 9 ? new Date(departureDate).getMonth() + 1 : `0${new Date(departureDate).getMonth() + 1}`
+    let depDay = new Date(departureDate).getDate() > 9 ? new Date(departureDate).getDate() : `0${new Date(departureDate).getDate()}`
 
-    departureDate = `${new Date(departureDate).getFullYear()}-${new Date(departureDate).getMonth() + 1}-${new Date(departureDate).getDate()}`
+    departureDate = `${depYr}-${depMnth}-${depDay}`
+    // `${new Date(departureDate).getFullYear()}-${new Date(departureDate).getMonth() + 1}-${new Date(departureDate).getDate()}`
+    let arrYr = new Date(arrivalDate).getFullYear()
+    let arrMnth = (new Date(arrivalDate).getMonth() + 1) > 9 ? new Date(arrivalDate).getMonth() + 1 : `0${new Date(arrivalDate).getMonth() + 1}`
+    let arrDay = new Date(arrivalDate).getDate() > 9 ? new Date(arrivalDate).getDate() : `0${new Date(arrivalDate).getDate()}`
 
-    tripDirection === 'roundTrip' ? arrivalDate = `${new Date(departureDate).getFullYear()}-${new Date(departureDate).getMonth() + 1}-${new Date(departureDate).getDate()}` : arrivalDate = ""
+    tripDirection === 'roundTrip' ? arrivalDate = `${arrYr}-${arrMnth}-${arrDay}` : arrivalDate = ""
+    // `${new Date(arrivalDate).getFullYear()}-${new Date(arrivalDate).getMonth() + 1}-${new Date(arrivalDate).getDate()}` : arrivalDate = ""
 
     const fetchFlights = async () => {
         let { data } = await axios.get(`/api/flights?origin=${origin}&destination=${destination}&departureDate=${departureDate}&arrivalDate=${arrivalDate}`)
